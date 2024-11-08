@@ -13,7 +13,7 @@ class Comment extends Model
     /**
      * The table associated with the model.
      */
-    protected string $table = 'nova_comments';
+    protected $table = 'nova_comments';
 
     /**
      * The "booting" method of the model.
