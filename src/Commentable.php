@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace KirschbaumDevelopment\NovaComments;
+namespace Uzbek\NovaComments;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use KirschbaumDevelopment\NovaComments\Models\Comment;
+use Uzbek\NovaComments\Models\Comment;
 
 trait Commentable
 {

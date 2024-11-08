@@ -2,13 +2,21 @@
     <div class="commenter__comment py-4 border-t border-40">
         <div class="font-light text-80 text-sm">
             <template v-if="hasCommenter">
-                <a class="link-default" :href="commenterUrl" v-text="commenter"></a>
-
-                said
+                <router-link
+                    :to="{
+                      name: 'detail',
+                      params: {
+                        resourceName: commenter.resource,
+                        resourceId: commenter.id,
+                      },
+                    }"
+                    class="no-underline font-bold dim text-primary"
+                    v-text="commenter.name"></router-link>
+                {{ __('said') }}
             </template>
 
             <template v-else>
-                Written
+                {{ __('Written') }}
             </template>
 
             {{ date }}
@@ -19,53 +27,53 @@
 </template>
 
 <script>
+export default {
+    props: {
+        comment: {
+            type: Object,
+            required: true
+        }
+    },
 
-    export default {
-        props: {
-            comment: {
-                type: Object,
-                required: true
-            }
+    computed: {
+        commentString() {
+            return this.comment.fields.find(field => field.attribute === 'comment').value;
         },
 
-        computed: {
-            commentString() {
-                return _.find(this.comment.fields, { attribute: 'comment' }).value;
-            },
+        commenter() {
+            const field = this.comment.fields.find(field => field.attribute === 'commenter');
+            return field ? {
+                name: field.value,
+                resource: field.resourceName,
+                id: field.belongsToId
+            } : null;
+        },
 
-            commenter() {
-                return _.find(this.comment.fields, { attribute: 'commenter' }).value;
-            },
+        date() {
+            const language = Nova.app.__('Moment Locale');
+            moment.locale(language);
+            const now = moment();
+            const date = moment.utc(this.comment.fields.find(field => field.attribute === 'created_at').value)
+                .tz(moment.tz.guess());
 
-            commenterUrl() {
-                let commenterId = _.find(this.comment.fields, { attribute: 'commenter' }).belongsToId;
-
-                return `${Nova.config("base")}/resources/users/${commenterId}`;
-            },
-
-            date() {
-                let now = moment();
-                let date = moment.utc(_.find(this.comment.fields, { attribute: 'created_at' }).value)
-                    .tz(moment.tz.guess());
-
-                if (date.isSame(now, 'minute')) {
-                    return 'just now';
-                }
-
-                if (date.isSame(now, 'day')) {
-                    return `at ${date.format('LT')}`;
-                }
-
-                if (date.isSame(now, 'year')) {
-                    return `on ${date.format('MMM D')}`;
-                }
-
-                return `on ${date.format('ll')}`;
-            },
-
-            hasCommenter() {
-                return Boolean(this.commenter);
+            if (date.isSame(now, 'minute')) {
+                return Nova.app.__('just now');
             }
+
+            if (date.isSame(now, 'day')) {
+                return Nova.app.__('at') + ' ' + date.format('LT');
+            }
+
+            if (date.isSame(now, 'year')) {
+                return Nova.app.__('on') + ' ' + (language === 'de' ? date.format('D MMM') : date.format('MMM D'));
+            }
+
+            return Nova.app.__('on') + ' ' + date.format('ll');
+        },
+
+        hasCommenter() {
+            return Boolean(this.commenter);
         }
     }
+}
 </script>

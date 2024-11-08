@@ -1,0 +1,19 @@
+{
+    "Comments" : "Izohlar",
+    "Comment" : "Izoh",
+    "Commentable" : "Izohlanadigan",
+    "Commenter" : "Izoh qoldiruvchi",
+    "Created" : "Yaratilgan",
+    "Write new comment" : "Yangi izoh yozing",
+    "On MacOS, press ⌘ + Enter to save" : "MacOS-da saqlash uchun ⌘ + Enter tugmalarini bosing",
+    "Save Comment" : "Izohni saqlash",
+    "Older" : "Eski",
+    "Newer" : "Yangi",
+    "A new comment has been created." : "Yangi izoh yaratildi.",
+    "Written" : "Yozilgan",
+    "said" : "yozdi",
+    "Moment Locale" : "uz",
+    "just now" : "hozir",
+    "at" : "da",
+    "on" : "ustida"
+}

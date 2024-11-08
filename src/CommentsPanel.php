@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace KirschbaumDevelopment\NovaComments;
+namespace Uzbek\NovaComments;
 
-use KirschbaumDevelopment\NovaComments\Nova\Comment;
+use Uzbek\NovaComments\Nova\Comment;
 use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Panel;
 
@@ -15,7 +15,7 @@ class CommentsPanel extends Panel
      */
     public function __construct()
     {
-        parent::__construct('Comments', $this->prepareFields($this->fields()));
+        parent::__construct(__('Comments'), $this->prepareFields($this->fields()));
     }
 
     /**

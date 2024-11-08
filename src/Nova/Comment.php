@@ -1,10 +1,10 @@
 <?php
 
-namespace KirschbaumDevelopment\NovaComments\Nova;
+namespace Uzbek\NovaComments\Nova;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use KirschbaumDevelopment\NovaComments\Models\Comment as CommentModel;
+use Uzbek\NovaComments\Models\Comment as CommentModel;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\MorphTo;
@@ -44,22 +44,22 @@ class Comment extends Resource
     public function fields(NovaRequest $request): array
     {
         return [
-            Textarea::make('comment')
+            Textarea::make(__('Comment'), 'comment')
                 ->alwaysShow()
                 ->hideFromIndex(),
 
-            MorphTo::make('Commentable')->onlyOnIndex(),
+            MorphTo::make(__('Commentable'), 'Commentable')->onlyOnIndex(),
 
-            Text::make('comment')
+            Text::make(__('Comment'), 'comment')
                 ->displayUsing(function ($comment) {
                     return Str::limit($comment, config('nova-comments.limit'));
                 })
                 ->onlyOnIndex(),
 
-            BelongsTo::make('Commenter', 'commenter', config('nova-comments.commenter.nova-resource'))
+            BelongsTo::make(__('Commenter'), 'commenter', config('nova-comments.commenter.nova-resource'))
                 ->exceptOnForms(),
 
-            DateTime::make('Created', 'created_at')
+            DateTime::make(__('Created'), 'created_at')
                 ->exceptOnForms()
                 ->sortable(),
         ];

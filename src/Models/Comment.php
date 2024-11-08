@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace KirschbaumDevelopment\NovaComments\Models;
+namespace Uzbek\NovaComments\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,10 +12,8 @@ class Comment extends Model
 {
     /**
      * The table associated with the model.
-     *
-     * @var string
      */
-    protected $table = 'nova_comments';
+    protected string $table = 'nova_comments';
 
     /**
      * The "booting" method of the model.
@@ -24,28 +22,23 @@ class Comment extends Model
     {
         parent::boot();
 
-        static::creating(
-            function ($comment): void {
-                if (auth()->check()) {
-                    $comment->commenter_id = auth()->id();
-                }
+        static::creating(function (self $comment): void {
+            $comment->comment = filter_var($comment->comment, FILTER_SANITIZE_SPECIAL_CHARS);
+
+            if (auth()->check()) {
+                $comment->commenter_id = auth()->id();
             }
-        );
+        });
     }
 
-    /**
-     * @return MorphTo
-     */
     public function commentable(): MorphTo
     {
         return $this->morphTo();
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function commenter(): BelongsTo
     {
-        return $this->belongsTo(config('auth.providers.users.model'), 'commenter_id');
+        $commenterModel = config("nova-comments.commenter.nova-resource", 'stdClass')::$model ?? config('auth.providers.users.model');
+        return $this->belongsTo($commenterModel, 'commenter_id');
     }
 }

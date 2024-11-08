@@ -1,0 +1,19 @@
+{
+    "Comments" : "Комментарии",
+    "Comment" : "Комментарий",
+    "Commentable" : "Комментируемый",
+    "Commenter" : "Комментатор",
+    "Created" : "Создан",
+    "Write new comment" : "Написать новый комментарий",
+    "On MacOS, press ⌘ + Enter to save" : "На MacOS нажмите ⌘ + Enter для сохранения",
+    "Save Comment" : "Сохранить комментарий",
+    "Older" : "Старые",
+    "Newer" : "Новые",
+    "A new comment has been created." : "Создан новый комментарий.",
+    "Written" : "Написано",
+    "said" : "сказал",
+    "Moment Locale" : "ru",
+    "just now" : "только что",
+    "at" : "в",
+    "on" : "на"
+}

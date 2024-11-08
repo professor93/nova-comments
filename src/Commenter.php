@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace KirschbaumDevelopment\NovaComments;
+namespace Uzbek\NovaComments;
 
 use Laravel\Nova\ResourceTool;
 
@@ -13,7 +13,7 @@ class Commenter extends ResourceTool
      */
     public function name(): string
     {
-        return 'Commenter';
+        return __('Commenter');
     }
 
     /**

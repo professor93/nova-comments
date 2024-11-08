@@ -1,28 +1,27 @@
 # A commenting resource tool for Nova apps
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/kirschbaum-development/nova-comments.svg)](https://packagist.org/packages/kirschbaum-development/nova-comments)
-[![Total Downloads](https://img.shields.io/packagist/dt/kirschbaum-development/nova-comments.svg)](https://packagist.org/packages/kirschbaum-development/nova-comments)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d3cc58ebefe2480da123f95d43ce1fcc)](https://app.codacy.com/app/Kirschbaum/nova-comments?utm_source=github.com&utm_medium=referral&utm_content=kirschbaum-development/nova-comments&utm_campaign=Badge_Grade_Dashboard)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/uzbek/nova-comments.svg)](https://packagist.org/packages/uzbek/nova-comments)
+[![Total Downloads](https://img.shields.io/packagist/dt/uzbek/nova-comments.svg)](https://packagist.org/packages/uzbek/nova-comments)
 
 This package contains an inline commenting form for any resource to easily add comments. Think a simple version of Disqus for Nova!
 
 ###### Commenter Tool
-![screenshot of the commenter resource tool](https://raw.githubusercontent.com/kirschbaum-development/nova-comments/master/screenshots/commenter.png)
+![screenshot of the commenter resource tool](https://raw.githubusercontent.com/professor93/nova-comments/master/screenshots/commenter.png)
 
 ###### Simple Comment Panel
-![screenshot of the comments panel](https://raw.githubusercontent.com/kirschbaum-development/nova-comments/master/screenshots/comments-panel.png)
+![screenshot of the comments panel](https://raw.githubusercontent.com/professor93/nova-comments/master/screenshots/comments-panel.png)
 
 ## Requirements
 
 This Nova resource tool requires Nova 4.0 or higher.  
-For older version of Nova, use the tagged version [1.0.2](https://github.com/kirschbaum-development/nova-comments/releases/tag/1.0.2)
+For older version of Nova, use the tagged version [1.0.2](https://github.com/professor93/nova-comments/releases/tag/1.0.2)
 
 ## Installation
 
 You can install this package in a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
-composer require kirschbaum-development/nova-comments
+composer require uzbek/nova-comments
 ```
 
 Next, we need to run migrations. Auto-discovery of this package's service provider helps with that!
@@ -34,7 +33,7 @@ php artisan migrate
 And lastly, any model that you want to have comments needs the `Commentable` trait added to it.
 
 ```php
-use KirschbaumDevelopment\NovaComments\Commentable;
+use Uzbek\NovaComments\Commentable;
 
 class Post extends Model
 {
@@ -49,7 +48,7 @@ If you would like to publish the config for this package, run:
 ```bash
 php artisan vendor:publish
 ```
-And choose the provider for this package: `KirschbaumDevelopment\NovaComments\NovaCommentsServiceProvider`
+And choose the provider for this package: `Uzbek\NovaComments\NovaCommentsServiceProvider`
 
 This package requires that it has a commenter, which is simply a `User`. Nova Comments automatically defaults to the `App\Nova\User` resource, but can easily be changed in the publishable config file.
 
@@ -61,12 +60,12 @@ There are two components that ship with this package, the `Commenter` and a `Com
 
 The first, and most useful, component is the `Commenter`. It is a resource tool that allows you to insert a commenting panel directly onto any Nova resource. This panel allows you to add a comment directly to a resource without needing to create one from the respective create view. The newly created comments show up below the commenting form with live updating.
 
-Simply add the `KirschbaumDevelopment\NovaComments\Commenter` resource tool in your Nova resource:
+Simply add the `Uzbek\NovaComments\Commenter` resource tool in your Nova resource:
 
 ```php
 namespace App\Nova;
 
-use KirschbaumDevelopment\NovaComments\Commenter;
+use Uzbek\NovaComments\Commenter;
 
 class Post extends Resource
 {
@@ -94,7 +93,7 @@ As a convenience, a prebuilt comments panel has been created for you. All you ne
 ```php
 namespace App\Nova;
 
-use KirschbaumDevelopment\NovaComments\Commenter;
+use Uzbek\NovaComments\Commenter;
 
 class Post extends Resource
 {
@@ -128,7 +127,7 @@ Occasionally you may want to hide comments from the sidebar. You can easily do t
 Due to an limitation in how Nova paginates results, there is currently no way to set the `perPage` value for the number of comments that will display at a time from a configuration value. Nova's default value is 5 per page. If you would like to set this to a different value, such as 25, we recommend you extend the `Commenter` and set this value with the follwing code:
 
 ```php
-use KirschbaumDevelopment\NovaComments\Commenter as NovaCommenter;
+use Uzbek\NovaComments\Commenter as NovaCommenter;
 
 class Commenter extends NovaCommenter
 {

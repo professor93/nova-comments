@@ -1,5 +1,6 @@
 {
-    "name": "kirschbaum-development/nova-comments",
+    "name": "uzbek/nova-comments",
+    "version": "1.0.0",
     "description": "A Laravel Nova resource for commenting on model.",
     "keywords": [
         "laravel",
@@ -11,7 +12,7 @@
             "url": "https://nova.laravel.com"
         }
     ],
-    "homepage": "https://github.com/kirschbaum-development/nova-comments",
+    "homepage": "https://github.com/professor93/nova-comments",
     "license": "MIT",
     "authors": [
         {
@@ -23,6 +24,11 @@
             "name": "Andrey Mukhin",
             "email": "centgart@gmail.com",
             "role": "Contributor"
+        },
+        {
+            "name": "Inoyatulloh Junaydullaev",
+            "email": "mronx@ya.ru",
+            "role": "Contributor"
         }
     ],
     "require": {
@@ -31,13 +37,13 @@
     },
     "autoload": {
         "psr-4": {
-            "KirschbaumDevelopment\\NovaComments\\": "src/"
+            "Uzbek\\NovaComments\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "KirschbaumDevelopment\\NovaComments\\NovaCommentsServiceProvider"
+                "Uzbek\\NovaComments\\NovaCommentsServiceProvider"
             ]
         }
     },
