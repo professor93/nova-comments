@@ -1,6 +1,6 @@
 {
     "name": "uzbek/nova-comments",
-    "version": "1.0.0",
+    "version": "5.0.0",
     "description": "A Laravel Nova resource for commenting on model.",
     "keywords": [
         "laravel",
